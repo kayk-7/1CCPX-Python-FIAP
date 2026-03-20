@@ -12,7 +12,7 @@ print("7" + "4") #CONCATENAÇÃO DE STINGS
 '''
 
 #VARIÁVEIS
-nome = "Alexadre" # srt
+nome = "Alexadre" # str
 idade = 26 #int
 peso = 70.2 #float
 
