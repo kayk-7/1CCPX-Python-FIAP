@@ -28,7 +28,7 @@ nb = int(input("sua nota 2: "))
 me = (na + nb)/2
 
 print(f"media final: {me}")
-#
+#EXERCICIO 7
 
 
 
