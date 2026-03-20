@@ -27,3 +27,15 @@ nova_idade = idade + 1
 
 print(nome, idade)
 print(nova_idade)
+
+# EXERCICIO 1
+pi = 3.14159
+raio = 5
+area = pi*(raio**2)
+print(f"O resultado da área é: {area}\n")
+'''
+
+'''
+Fahre = 79
+re = (Fahre - 32)*5/9
+print(f"O seu grau em celsius é: {re}\n")
