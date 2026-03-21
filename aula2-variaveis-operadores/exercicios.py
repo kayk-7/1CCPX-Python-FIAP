@@ -29,6 +29,13 @@ me = (na + nb)/2
 
 print(f"media final: {me}")
 #EXERCICIO 7
+nota_a= int(input("Qual nota 1: "))
+nota_b= int(input("Qual nota 2: "))
+media=((nota_a*4)+(nota_b*56))/10
+print(f"A sua média é: {media}")
 
-
-
+# proximo
+prod= int(input("Valor do produto escolhido: "))
+valr= int(input("Dinheiro entregue: "))
+tr= valr-prod
+print(f"O restante sera: R${tr}, obrigado!")

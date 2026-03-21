@@ -39,3 +39,4 @@ print(f"O resultado da área é: {area}\n")
 Fahre = 79
 re = (Fahre - 32)*5/9
 print(f"O seu grau em celsius é: {re}\n")
+# exercicio  4
