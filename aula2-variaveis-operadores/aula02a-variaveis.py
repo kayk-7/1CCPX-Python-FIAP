@@ -6,7 +6,6 @@ print("7" + "4") #CONCATENAÇÃO DE STINGS
 
 #Comentário de 1 linha
 '''
-
     Comentários de 
     múltiplas linhas
 '''

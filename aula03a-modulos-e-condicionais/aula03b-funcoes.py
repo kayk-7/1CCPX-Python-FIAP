@@ -15,4 +15,4 @@ def soma(num_a, num_b):
     soma = num_a + num_b
     return soma
 
-print(soma(27,12))
+print(soma(12,12))
