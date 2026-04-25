@@ -37,4 +37,3 @@ valor_parcela = calcular_parcelas(emprestimo,taxas,nparcelas)
 valor_total_pago = calcular_total(valor_parcela,nparcelas)
 juros_pagos = calcular_juros(valor_total_pago,emprestimo)
 print(f"Ola {nome}, o seu emprestimo de: {emprestimo}, vai ter {taxas}% ao mes, resultando em {valor_parcela:.2f} por mes, sendo pago ao total  {valor_total_pago:.2f} e desse valor {juros_pagos:.2f} e so de juros.")
-
