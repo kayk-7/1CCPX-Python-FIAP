@@ -1,6 +1,46 @@
 import pygame
 
 
+# atividade 4
+
+def horas_extras(salario_base, horas):
+    horas_extras =  salario_base*0.015*horas
+    return horas_extras
+def calcular_desconto_faltas(salario_base, faltas):
+    calcular_desconto_faltas = faltas*0.02*salario_base
+    return calcular_desconto_faltas
+def calcular_bonus(cargo,recebeu_bonus):
+    if recebeu_bonus=="s":
+        match cargo:
+            case 1:
+                calcular_bonus=1000
+            case 2:
+                calcular_bonus=500
+            case 3:
+                calcular_bonus=300
+            case 4:
+                calcular_bonus=100
+    else:
+        calcular_bonus=0
+    return calcular_bonus
+
+nome = input("Digite seu nome: ")
+cargo  = int(input("Digite seu cargo (1 a 4): "))
+while cargo >4:
+    print("Apenas valores de 1 a 4")
+    cargo = int(input("Digite seu cargo (1 a 4): "))
+
+sal = float(input("Digite seu salario: "))
+horaex = int(input("Horas extras trabalhadas: "))
+faltas = int(input("Quantas faltas: "))
+bonus = input("Recebeu bonus(s ou n): ")
+
+acumu=calcular_bonus(cargo,bonus) + horas_extras(sal,horaex)
+desc=calcular_desconto_faltas(sal,faltas)
+salfinal=sal+acumu-desc
+
+print(f"Ola {nome}, seu salario bruto foi: {sal},  e teve um  acrescimo de:  {acumu} e um desconto de: {desc}. Seu salario final foi de: {salfinal}")
+
 # atividade 3
 cp1 = float(input("Digite a nota do primeiro Checkpoint(0 a 10): "))
 cp2 = float(input("Digite a nota do segundo Checkpoint(0 a 10): "))

@@ -1,29 +1,40 @@
-# atividade 3
-cp1 = float(input("Digite a nota do primeiro Checkpoint(0 a 10): "))
-cp2 = float(input("Digite a nota do segundo Checkpoint(0 a 10): "))
-cp3 = float(input("Digite a nota do terceiro Checkpoint(0 a 10): "))
-sp1 = float(input("Digite a nota da primeira Sprint(0 a 10): "))
-sp2 = float(input("Digite a nota da segunda Sprint(0 a 10): "))
-gs = float(input("Digite a nota do Global Solution(0 a 10): "))
-
-if cp1>10 or cp2>10 or cp3>10 or sp1>10 or sp2>10 or gs>10:
-    print("E ATE 10 BURRO")
-    exit()
-if cp1 < cp2:
-    if cp1 < cp3:
-            somacps = cp2 + cp3
-elif cp2 < cp1:
-    if cp2 < cp3:
-            somacps = cp1 + cp3
-elif cp3 < cp2:
-    if cp3 < cp1:
-            somacps = cp2 + cp1
-elif cp1 == cp2 and cp2 == cp3 and cp1 == cp3:
-    somacps = cp1 + cp2
-
-media = ((somacps + sp1 + sp2)/4)*0.4+(gs*0.6)
-mediapeso = media*0.4
-
-print(f"Sua media nesse semestre e: {media:.1f}. Agora sua media com peso e: {mediapeso:.1f}.")
-
+# atividade 5
+def pode_aprovar(idade,rendamensal,emprestimo):
+    if idade > 18:
+        if emprestimo <rendamensal*20:
+            print("Emprestimo aprovado")
+        elif  emprestimo >  rendamensal*20:
+            print("Emprestimo recusado")
+            exit()
+    else:
+        print("Emprestimo recusado")
+        exit()
+def definir_taxa(parcelas):
+    if parcelas<=6:
+        taxa=0.05
+    elif parcelas >6 and parcelas<=12:
+        taxa=0.08
+    elif parcelas >12 and parcelas<=24:
+        taxa=0.10
+    return taxa
+def calcular_parcelas(valor,tax,parcelas):
+    resultado = (valor * tax * (1+tax) ** parcelas) / ((1+tax)**parcelas-1)
+    return resultado
+def calcular_total(parcela,parcelas):
+    calcular_total = parcela*parcelas
+    return calcular_total
+def calcular_juros(total,valor):
+    calcular_juros = total-valor
+    return calcular_juros
+nome=input('Escreva seu nome: ')
+idade=int(input('Escreva sua idade: '))
+renda_mensal=int(input('Escreva a sua renda mensal: '))
+emprestimo=int(input('Escreva o valor do emprestimo: '))
+nparcelas=int(input('Escreva a quantidade de parcelas: '))
+print(pode_aprovar(idade,renda_mensal,emprestimo))
+taxas = definir_taxa(nparcelas)
+valor_parcela = calcular_parcelas(emprestimo,taxas,nparcelas)
+valor_total_pago = calcular_total(valor_parcela,nparcelas)
+juros_pagos = calcular_juros(valor_total_pago,emprestimo)
+print(f"Ola {nome}, o seu emprestimo de: {emprestimo}, vai ter {taxas}% ao mes, resultando em {valor_parcela:.2f} por mes, sendo pago ao total  {valor_total_pago:.2f} e desse valor {juros_pagos:.2f} e so de juros.")
 
