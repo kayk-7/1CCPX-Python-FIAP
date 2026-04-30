@@ -1,50 +1,86 @@
 # Preparando o ambiente:
 from collections import Counter
 import pandas as pd
+import matplotlib.pyplot as plt
 
-#Configurar a saida da tabela final:
-pd.set_option('display.max_rows', None)
-pd.set_option('display.max_columns', None)
-pd.set_option('display.width', None)
+#graficos para variaveis qualitativas:
+#grafico de barras:
 
-#Criar a base de  dados:
-dados = [14]*6+[15]*12+[16]*9+[17]*3
+#grafico de setores:
+# 1) conjunto de dados:
+dados1 = ["Sim"]*20  + ["Nao"]*45
+# cria uma especie de dicionario com o counter
+respostas1 = Counter(dados1)
 
-#Curiosidade
-# print(type(dados))
+'''
+#graficos para variaveis qualitativas:
+#grafico de barras:
 
-#frequencia  absoluta:
-fi = pd.Series(Counter(dados)).sort_index()
-print(fi)
+# 2) construcao grafica:
+plt.pie(list(respostas1.values()),
+        labels=list(respostas1.keys()),
+        autopct="%1.2f%%",
+        colors=["green",  "red"])
+plt.title("Resultado da  Pesquisa Aplicada  pelo McDonalds - 2026")
+plt.legend(list(respostas1.keys()),
+           loc="upper right",)
+plt.show()
+'''
 
-#frequencia absoluta acumulada:
-fia = fi.cumsum()
-print(fia)
+'''
+# 3) grafico de Barras Verticais:
 
-#frequencia relativa:
-fr =  fi / fi.sum()*100
-print(fr)
+plt.bar(x=list(respostas1.keys()),
+        height=list(respostas1.values()),
+        color=["blue","red"])
+plt.title("Resultado da  Pesquisa Aplicada  pelo McDonalds - 2026")
+plt.legend(list(respostas1.keys()),
+           loc="upper right",)
+#mostrar  o  grafico
+plt.show()
+'''
 
-#frequencia relativa acumulada:
-fra = fr.cumsum()
-print(fra)
+'''
+#grafico de Barras Horizontal:
 
-# montar a  tabela:
-tabela = pd.DataFrame({
-    'Frequancia absoluta': fi,
-    'Frequancia absoluta acumulada': fia,
-    'Frequancia relativa': fr,
-    'Frequancia relativa acumulada': fra
-})
-print(tabela)
+plt.barh(y=list(respostas1.keys()),
+        width=list(respostas1.values()),
+        color=["blue","red"])
+plt.title("Resultado da  Pesquisa Aplicada  pelo McDonalds - 2026")
+plt.legend(list(respostas1.keys()),
+           loc="upper right",)
+#mostrar  o  grafico
+plt.show()
+'''
 
-total_row=pd.Series({
-    'Frequancia absoluta': fi.sum(),
-    'Frequancia absoluta acumulada': '-',
-    'Frequancia relativa': fr.sum(),
-    'Frequancia relativa acumulada': '-'
-}, name='total')
-print(total_row)
+#grafico para variaves quantitativas boxplot:
+#base  de dados numerica:
+dados2 = [15,17,15,15,17,14,18,15,15,17,15,12,15,16]
 
-tabela = pd.concat([tabela, total_row.to_frame().T])
-print(tabela)
+'''
+plt.hist(dados2,bins=3,color="green")
+plt.xlabel("Intervalo das quantidades vendidas de camisetas: ")
+plt.ylabel("Frequencia absoluta")
+plt.title("vendas da Startup FIAP Store")
+plt.show()
+'''
+
+'''
+#  2) Construcao grafica:
+plt.boxplot(dados2,
+            patch_artist=True,
+            boxprops=dict(facecolor='green'))
+plt.title("Vendas da Startup One FIAP Store")
+plt.xlabel("Dados coletados pela startup em  04/26")
+plt.ylabel("quantidade de camisetas vendidas")
+plt.show()
+'''
+#  3) Construcao grafica:
+plt.boxplot(dados2,
+            patch_artist=True,
+            boxprops=dict(facecolor='green'),
+            vert=False)
+plt.title("Vendas da Startup One FIAP Store")
+plt.xlabel("quantidade de camisetas vendidas")
+plt.ylabel("Dados coletados pela startup em  04/26")
+plt.show()
