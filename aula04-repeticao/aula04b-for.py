@@ -14,6 +14,6 @@ for i in range(qtd_music):
 #LACOS ANINHADOS
 #REP. ENCADEADAS
 
-for i in range(0, 4):
-    for j in range(0, 3, 2):
-        print(f"i:{i} j:{j}")
+for valor in range(0, 4):
+    for segundo in range(0, 3, 2):
+        print(f"i:{valor} j:{segundo}")
