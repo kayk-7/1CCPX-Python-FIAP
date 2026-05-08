@@ -1,4 +1,4 @@
-import pygame
+
 # atividade 5
 def pode_aprovar(idade,rendamensal,emprestimo):
     if idade > 18:
