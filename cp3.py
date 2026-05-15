@@ -5,10 +5,6 @@ temperaturas = [
     [32, 35, 36, 34],
     [24, 26, 25, 27]
 ]
-sala1 = temperaturas[0]
-sala2 = temperaturas[1]
-sala3 = temperaturas[2]
-sala4 = temperaturas[3]
 
 c = 1
 
