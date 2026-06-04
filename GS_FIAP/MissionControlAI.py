@@ -1,14 +1,3 @@
-# Armazenar dados da missão em uma matriz.
-# Analisar cada ciclo.
-# Gerar alertas.
-# Calcular risco.
-# Classificar o ciclo.
-# Ver tendência da missão.
-# Descobrir qual área teve mais problemas.
-# Mostrar um relatório final.
-
-
-
 def analisar_tendencia(riscos_ciclos):
 
     primeiro_risco = riscos_ciclos[0]
@@ -89,6 +78,7 @@ def analisar_estabilidade(est):
     else:
         return "NORMAL | Estabilidade operacional adequada", 0
 
+
 #---AREA MONITORADAS---
 areas_monitoradas = [
  "Temperatura interna",
@@ -109,7 +99,6 @@ dados_missao = [
  [34, 55, 32, 82, 50]
 ]
 
-print(dados_missao)
 
 print("""
 ============================================================
@@ -121,13 +110,16 @@ Quantidade de ciclos analisados: 6
 ============================================================
 """)
 
+
 #---LISTA PARA IDENTIFICAR QUAL CICLO FOI O MAIS PERIGOSO---
 lista_riscos=[]
+
 
 #---LISTA PARA SOMA DE PERIGO DOS CICLOS---
 lista_pontos = []
 
 
+ciclos_criticos=0
 
 ciclo_atual=0
 for ciclo in dados_missao:
@@ -159,7 +151,6 @@ for ciclo in dados_missao:
     lista_pontos.append(lista_pontosfor)
 
 
-
     print(f"""CICLO ATUAL: {ciclo_atual} 
     Temperatura: {temperatura}°C {temp_status} 
     Comunicacao: {comunicacao}% {com_status} 
@@ -172,10 +163,9 @@ for ciclo in dados_missao:
     
     """)
 
-# for ciclos in dados_missao:
-#
-#     #---MEDIA DE RISCO DA MISSAO---
-#     media= sum(ciclos) / len(dados_missao)
+
+    if risco_total >5:
+        ciclos_criticos += 1
 
 pont_total_temp=0
 pont_total_com=0
@@ -190,25 +180,24 @@ for riscos in lista_pontos:
     pont_total_oxi += riscos[3]
     pont_total_est += riscos[4]
 
+
 #---TABELA COM A AREA MAIS AFETADA---
 lista_da_area_mais_afetada = [pont_total_temp, pont_total_com, pont_total_bat, pont_total_oxi, pont_total_est]
 
 index_area_afetada = lista_da_area_mais_afetada.index(max(lista_da_area_mais_afetada))
 
 
-ciclo_maior_risco=0
-
-
-indice_maior_risco=0
-
-
-# for ciclos in lista_riscos:
-#     # -==-IDENTIFICACAO DE CICLO MAIS PERIGOSO-==-
-#     if ciclos >= ciclo_maior_risco:
-
 #-==-IDENTIFICACAO DE CICLO MAIS PERIGOSO-==-
+maior_pontuacao = max(lista_riscos)
 
-#-==-TOTAL DA PONTUACAO DA MISSAO-==-
+indice_ciclo_critico = lista_riscos.index(maior_pontuacao)
+
+ciclo_mais_critico = indice_ciclo_critico + 1
+
+risco_medio_missao = sum(lista_riscos) / len(lista_riscos)
+
+quantidade_critica= lista_riscos[indice_ciclo_critico]/2
+
 
 #-==-MEDIA DOS VALORES DA MISSAO INTEIRA-==-
 temp_valores = [linha[0] for linha in dados_missao]
@@ -226,6 +215,7 @@ media_oxi = sum(oxi_valores) / len(oxi_valores)
 est_valores = [linha[4] for linha in dados_missao]
 media_est = sum(est_valores) / len(est_valores)
 
+
 print(f"""
 ============================================================
 RELATÓRIO FINAL DA MISSÃO
@@ -241,13 +231,14 @@ Média de bateria: {media_bat:.2f}%
 Média de oxigênio: {media_oxi:.2f}%
 Média de estabilidade: {media_est:.2f}%
 
-Ciclo mais crítico: 
-Maior pontuação de risco: 10
-Risco médio da missão: 3.67
-Quantidade de ciclos críticos: 2
+Ciclo mais crítico: {ciclo_mais_critico}
+Maior pontuação de risco: {maior_pontuacao}
+Risco médio da missão: {risco_medio_missao:.2f}
+Quantidade de críticos: {quantidade_critica:.0f}
 
 Tendência da missão:
 {analisar_tendencia(lista_riscos)}
+Quantidade de ciclos críticos: {ciclos_criticos}
 
 Pontuação acumulada por área:
 Temperatura interna: {lista_da_area_mais_afetada[0]} pontos
@@ -260,6 +251,3 @@ Estabilidade operacional: {lista_da_area_mais_afetada[4]} pontos
 {areas_monitoradas[index_area_afetada]}
 
 """)
-
-print(lista_pontos)
-print(max(lista_da_area_mais_afetada))
