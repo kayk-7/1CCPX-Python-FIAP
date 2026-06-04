@@ -259,7 +259,6 @@ Estabilidade operacional: {lista_da_area_mais_afetada[4]} pontos
 Área mais afetada:
 {areas_monitoradas[index_area_afetada]}
 
-
 """)
 
 print(lista_pontos)
