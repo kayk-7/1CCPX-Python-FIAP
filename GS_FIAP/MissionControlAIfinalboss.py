@@ -387,5 +387,6 @@ if classificacao_final == "MISSAO ESTAVEL":
 elif classificacao_final == "MISSAO EM ATENCAO":
     print("A missão apresentou instabilidades moderadas.")
 
+
 else:
     print("A missão apresentou falhas críticas e requer intervenção imediata.")
