@@ -96,17 +96,18 @@ dados_missao = [
  [31, 65, 58, 91, 70],
  [36, 42, 38, 87, 55],
  [39, 28, 19, 78, 35],
+ [45, 48, 30, 80, 40],
  [34, 55, 32, 82, 50]
 ]
 
 
 print("""
 ============================================================
-MISSION CONTROL AI
+MISSION DATA ANALYTICS 
 ============================================================
-Missão: Orion Test Alpha
-Equipe: Equipe Apollo
-Quantidade de ciclos analisados: 6
+Missão: Project Rocket Mitigation 
+Equipe: Equipe Bravo
+Quantidade de ciclos analisados: 7
 ============================================================
 """)
 
@@ -122,6 +123,7 @@ lista_pontos = []
 ciclos_criticos=0
 
 ciclo_atual=0
+
 for ciclo in dados_missao:
     ciclo_atual += 1
     temperatura = ciclo[0]
@@ -220,8 +222,8 @@ print(f"""
 ============================================================
 RELATÓRIO FINAL DA MISSÃO
 ============================================================
-Missão: Orion Test Alpha
-Equipe: Equipe Apollo
+Missão: Project Rocket Mitigation 
+Equipe: Equipe Bravo
 
 Quantidade de ciclos analisados:{ciclo_atual}
 
